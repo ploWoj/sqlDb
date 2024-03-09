@@ -1,19 +1,10 @@
 #pragma once
 
 #include "student.hpp"
+#include "data.hpp"
 
 #include <vector>
 #include <memory>
-
-constexpr std::vector<std::string> cities {"Warszawa", "Kraków", "Łódź", "Wrocław", "Poznań", "Gdańsk", "Szczecin", "Bydgoszcz",
-                                              "Lublin", "Białystok", "Katowice", "Gdynia", "Częstochowa", "Radom", "Sosnowiec",
-                                              "Toruń", "Kielce", "Rzeszów", "Gliwice", "Zabrze", "Olsztyn", "Bielsko-Biała",
-                                              "Bytom", "Zielona Góra", "Rybnik", "Tychy", "Gorzów Wielkopolski", "Dąbrowa Górnicza",
-                                              "Elbląg", "Płock"};
-
-    
-constexpr std::vector<std::string> streets = {"Mickiewicza", "Sienkiewicza", "Kościuszki", "Paderewskiego", "Łokietka", "Kopernika",
-                                         "Piłsudskiego", "Słowackiego", "Reymonta", "Jana Pawła II", "Wyspiańskiego", "3 Maja"};
 
 
 class Db {
@@ -31,12 +22,17 @@ public:
     void addStudent();
 
     bool validatePesel(const std::string& pesel);
-    bool validateName(const std::string& name);
+    
 
-    std::string generateAddress();
+    
 
 private:
     std::vector<std::unique_ptr<Student>> db_;
+    std::string generateAddress();
+    void generateNames(std::string& name, std::string& gender);
+    std::string generatePesel(const std::string& gender);
+    void numberGender(const std::string& gender);
+    bool validateSurame(const std::string& name);
 };
 
 // Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć

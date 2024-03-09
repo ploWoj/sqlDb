@@ -1,6 +1,8 @@
 #pragma once
 
+#include <iostream>
 #include <string>
+
 
 
 class Student {
@@ -12,12 +14,14 @@ public:
 
     // --------
     std::string getName() const { return name_; };
-    std::string getSurnme() const { return surname_; };
+    std::string getSurname() const { return surname_; };
     std::string getPesel() const { return pesel_; };
     std::string getAddress() const { return address_; };
     std::string getGender() const { return gender_; };
 
     friend std::ostream& operator<<(std::ostream& os, const Student& student);
+
+    // void print() { std::cout << name_ << " " << surname_ << " " << address_ << " " << pesel_ << " " << gender_ << '\n';}
 
 private:
     std::string name_;
@@ -27,9 +31,6 @@ private:
     std::string gender_;
 };
 
-std::ostream& operator<<(std::ostream& os, const Student& student) {
-    os << student.name_ << " " << student.surname_ << " " << student.pesel_ << " " << student.gender_ << " " << student.address_;
-    return os;
-}
+
 
 
